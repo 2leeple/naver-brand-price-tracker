@@ -98,6 +98,10 @@ npm run track -- --headless --no-prompt
 
 후보를 모은 뒤 관리자 가격과 가장 가까운 값을 우선으로 고르고, 차이가 같으면 source weight가 높은 값을 선택합니다.
 
+## Known Issues
+
+- 네이버 할인가와 정상가가 동시에 있을 때 가격을 간헐적으로 잘 불러오지 못함
+
 ## Notes
 
 - `node_modules`, `.playwright-profile`, 검사 결과 JSON/CSV, 디버그 캡처 파일은 Git에 올리지 않습니다.
