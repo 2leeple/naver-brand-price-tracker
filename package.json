@@ -1,0 +1,14 @@
+{
+  "name": "naver-brand-price-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Track price and sold-out changes for Naver products from the Cowlr admin dataset.",
+  "scripts": {
+    "probe": "node probe-naver-price.js",
+    "track": "node track-naver-prices.js",
+    "login": "node track-naver-prices.js --login"
+  },
+  "dependencies": {
+    "playwright": "^1.59.1"
+  }
+}

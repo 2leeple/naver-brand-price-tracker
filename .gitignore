@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Playwright local browser/session data
+.playwright-profile/
+playwright-report/
+test-results/
+
+# Generated reports
+marketplace-scan-report.json
+naver-price-report*.json
+naver-price-report*.csv
+
+# Generated documents and screenshots
+*.docx
+*.png
+*.html
+
+# Captured/debug browser bundles
+brandconnect-bridge.js
+chunk*.js
+page.bundle.js
+
+# Local environment files
+.env
+.env.*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
