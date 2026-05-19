@@ -306,13 +306,18 @@ function isLoginPage(pageUrl, text) {
   const url = String(pageUrl || "").toLowerCase();
   const body = String(text || "").toLowerCase();
 
-  return (
-    url.includes("nid.naver.com/nidlogin.login") ||
-    body.includes("아이디 또는 전화번호") ||
-    body.includes("비밀번호") ||
-    body.includes("로그인 상태 유지") ||
-    body.includes("네이버 : 로그인")
-  );
+  if (url.includes("nid.naver.com/nidlogin.login")) {
+    return true;
+  }
+
+  const hasLoginForm =
+    body.includes("아이디 또는 전화번호") &&
+    body.includes("비밀번호") &&
+    (body.includes("로그인 상태 유지") ||
+      body.includes("일회용 번호") ||
+      body.includes("qr코드"));
+
+  return body.includes("네이버 : 로그인") || hasLoginForm;
 }
 
 async function waitForLogin(page) {
@@ -331,6 +336,11 @@ async function waitForLogin(page) {
     rl.close();
   }
 
+  await page
+    .waitForURL((url) => !url.href.includes("nid.naver.com/nidlogin.login"), {
+      timeout: 10000,
+    })
+    .catch(() => null);
   await page.waitForTimeout(1500);
   return true;
 }
